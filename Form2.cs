@@ -16,5 +16,10 @@ namespace UzaktanIletisimSistemi
         {
             InitializeComponent();
         }
+
+        private void linkLabelBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

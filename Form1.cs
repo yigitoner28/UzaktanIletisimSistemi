@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace UzaktanIletisimSistemi
 {
@@ -16,6 +17,9 @@ namespace UzaktanIletisimSistemi
         {
             InitializeComponent();
         }
+
+        static string conString = "Data Source=DESKTOP-73K0559;Initial Catalog=DbProje;Integrated Security=True";
+        SqlConnection connect = new SqlConnection(conString);
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -123,6 +127,9 @@ namespace UzaktanIletisimSistemi
 
         private void button3_Click(object sender, EventArgs e)
         {
+            
+
+
             if(textBox3.Text == "Enter username")
             {
                 pnlUsername.Visible = true;
@@ -213,6 +220,30 @@ namespace UzaktanIletisimSistemi
 
             pnlsignup.Dock = DockStyle.Fill;
             
+        }
+
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            if (textBox2.PasswordChar == '*')
+            {
+                btnHide.BringToFront();
+                textBox2.PasswordChar = '\0';
+            }
+        }
+
+        private void btnHide_Click(object sender, EventArgs e)
+        {
+            if (textBox2.PasswordChar == '\0')
+            {
+                btnShow.BringToFront();
+                textBox2.PasswordChar = '*';
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form2 frm2 = new Form2();
+            frm2.Show();
         }
     }
 }

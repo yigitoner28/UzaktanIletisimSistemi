@@ -42,7 +42,9 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.btnShow = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.btnHide = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -207,6 +209,7 @@
             this.linkLabel1.TabIndex = 9;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Forgot password";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // button1
             // 
@@ -260,13 +263,28 @@
             // 
             // panel8
             // 
+            this.panel8.Controls.Add(this.btnShow);
             this.panel8.Controls.Add(this.panel9);
+            this.panel8.Controls.Add(this.btnHide);
             this.panel8.Controls.Add(this.textBox2);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(400, 67);
             this.panel8.TabIndex = 3;
+            // 
+            // btnShow
+            // 
+            this.btnShow.BackColor = System.Drawing.Color.White;
+            this.btnShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShow.ForeColor = System.Drawing.Color.Black;
+            this.btnShow.Location = new System.Drawing.Point(343, 3);
+            this.btnShow.Name = "btnShow";
+            this.btnShow.Size = new System.Drawing.Size(54, 45);
+            this.btnShow.TabIndex = 12;
+            this.btnShow.Text = "Show";
+            this.btnShow.UseVisualStyleBackColor = false;
+            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
             // 
             // panel9
             // 
@@ -276,6 +294,19 @@
             this.panel9.Size = new System.Drawing.Size(366, 1);
             this.panel9.TabIndex = 4;
             // 
+            // btnHide
+            // 
+            this.btnHide.BackColor = System.Drawing.Color.White;
+            this.btnHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHide.ForeColor = System.Drawing.Color.Black;
+            this.btnHide.Location = new System.Drawing.Point(342, 3);
+            this.btnHide.Name = "btnHide";
+            this.btnHide.Size = new System.Drawing.Size(55, 43);
+            this.btnHide.TabIndex = 11;
+            this.btnHide.Text = "Hide";
+            this.btnHide.UseVisualStyleBackColor = false;
+            this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
+            // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -284,6 +315,7 @@
             this.textBox2.ForeColor = System.Drawing.Color.Gray;
             this.textBox2.Location = new System.Drawing.Point(15, 19);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(366, 23);
             this.textBox2.TabIndex = 2;
             this.textBox2.Text = " Password";
@@ -369,12 +401,13 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label5.Location = new System.Drawing.Point(252, 310);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 20);
+            this.label5.Size = new System.Drawing.Size(83, 20);
             this.label5.TabIndex = 5;
-            this.label5.Text = "User Name";
+            this.label5.Text = "Password";
             // 
             // pictureBox1
             // 
@@ -391,6 +424,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.Location = new System.Drawing.Point(252, 179);
             this.label2.Name = "label2";
@@ -773,7 +807,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Padding = new System.Windows.Forms.Padding(2);
-            this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.pnlLogo.ResumeLayout(false);
@@ -878,6 +911,8 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button btnShow;
+        private System.Windows.Forms.Button btnHide;
     }
 }
 
