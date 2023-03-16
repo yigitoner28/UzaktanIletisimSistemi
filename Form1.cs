@@ -86,19 +86,49 @@ namespace UzaktanIletisimSistemi
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "Enter username")
-            {
-                panel5.Visible = true;
-                textBox1.Focus();
-                return;
-            }
-            if (textBox2.Text == "Password")
-            {
-                panel7.Visible = true;
-                textBox2.Focus();
-                return;
 
+           /*
+                if (textBox1.Text == "Enter username")
+                {
+                    panel5.Visible = true;
+                    textBox1.Focus();
+                    return;
+                }
+
+                if  (textBox2.Text == "Password")
+                {
+                    panel7.Visible = true;
+                    textBox2.Focus();
+                    return;
+
+                }
+            */ 
+           // Şifre Kontrolu 
+            if(textBox1.Text=="Enter username" || textBox2.Text == "Password")
+            {
+                if (textBox1.Text == "Enter username")
+                {
+                    panel5.Visible = true;
+                    textBox1.Focus();
+                    return;
+                }
+
+                else if (textBox2.Text == "Password")
+                {
+                    panel7.Visible = true;
+                    textBox2.Focus();
+                    return;
+
+                }
             }
+
+            else if(textBox1.Text!="Enter username"&& textBox2.Text != "Password")
+            {
+                Form3 frm3 = new Form3();
+                frm3.Show();
+            }
+
+
 
 
 
@@ -124,13 +154,38 @@ namespace UzaktanIletisimSistemi
 
         //System.Windows.Forms.Button. = new System.Windows.Forms.Timer();
 
-
+        // kayıt atma işlemi
         private void button3_Click(object sender, EventArgs e)
         {
-            
 
+            try
+            {
+                if(connect.State== ConnectionState.Closed)
+                    connect.Open();
+             
+                string kayit = "insert into bilgi (kullanici_adi,eposta,sifre) values (@kullanici_ad,@epostaa,@sifree)";
+                SqlCommand komut = new SqlCommand(kayit,connect);
 
-            if(textBox3.Text == "Enter username")
+                komut.Parameters.AddWithValue("@kullanici_ad", textBox3.Text);
+
+                komut.Parameters.AddWithValue("@epostaa", textBox4.Text);
+
+                komut.Parameters.AddWithValue("@sifree", textBox5.Text);
+
+                komut.ExecuteNonQuery();
+
+                connect.Close();
+                MessageBox.Show("kayit eklendi");
+
+               
+
+            }
+            catch(Exception hata)
+            {
+                MessageBox.Show("Hata meydana geldi" + hata.Message);
+            }
+
+            if(textBox3.Text == "Enter username" ||textBox3.Text=="")
             {
                 pnlUsername.Visible = true;
                 textBox3.Focus();
@@ -139,7 +194,7 @@ namespace UzaktanIletisimSistemi
 
             }
 
-            if (textBox4.Text == "Enter Mail Address")
+            if (textBox4.Text == "Enter Mail Address" || textBox4.Text == "")
             {
                 pnlMailAddress.Visible = true;
                 textBox4.Focus();
@@ -147,7 +202,7 @@ namespace UzaktanIletisimSistemi
                 return;
 
             }
-            if (textBox5.Text == "Enter Password")
+            if (textBox5.Text == "Enter Password" || textBox4.Text == "")
             {
                 pnlPassword.Visible = true;
                 textBox5.Focus();
@@ -155,22 +210,23 @@ namespace UzaktanIletisimSistemi
                 return;
 
             }
-            if (textBox6.Text == " Confirm Password")
-            {
-                pnlCPassword.Visible = true;
-                textBox6.Focus();
-                textBox6.SelectAll();
-                return;
+            //if (textBox6.Text == " Confirm Password")
+            //{
+            //    pnlCPassword.Visible = true;
+            //    textBox6.Focus();
+            //    textBox6.SelectAll();
+            //    return;
 
-            }
+            //}
 
 
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            pnlUsername.Visible = pnlMailAddress.Visible = pnlPassword.Visible = pnlCPassword.Visible = false;
-            
+            pnlUsername.Visible = pnlMailAddress.Visible = pnlPassword.Visible = false;
+            // pnlCPassword.Visible
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -193,10 +249,10 @@ namespace UzaktanIletisimSistemi
             textBox5.ForeColor = Color.White;
         }
 
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-            textBox6.ForeColor = Color.White;
-        }
+        //private void textBox6_TextChanged(object sender, EventArgs e)
+        //{
+        //    textBox6.ForeColor = Color.White;
+        //}
 
         private void button3_MouseEnter(object sender, EventArgs e)
         {
@@ -210,6 +266,7 @@ namespace UzaktanIletisimSistemi
             pnlLogin.Dock=DockStyle.Fill;
             pnlsignup.Visible = false;
             pnlLogo.Dock=DockStyle.Left;
+
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

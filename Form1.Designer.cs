@@ -60,13 +60,6 @@
             this.pnlsignup = new System.Windows.Forms.Panel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.button3 = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.panel23 = new System.Windows.Forms.Panel();
-            this.pnlCPassword = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.panel25 = new System.Windows.Forms.Panel();
-            this.panel26 = new System.Windows.Forms.Panel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel19 = new System.Windows.Forms.Panel();
@@ -103,9 +96,6 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlsignup.SuspendLayout();
-            this.panel23.SuspendLayout();
-            this.pnlCPassword.SuspendLayout();
-            this.panel25.SuspendLayout();
             this.panel19.SuspendLayout();
             this.pnlPassword.SuspendLayout();
             this.panel21.SuspendLayout();
@@ -176,7 +166,7 @@
             this.pnlLogin.Controls.Add(this.label2);
             this.pnlLogin.Controls.Add(this.label1);
             this.pnlLogin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlLogin.Location = new System.Drawing.Point(421, 52);
+            this.pnlLogin.Location = new System.Drawing.Point(0, 0);
             this.pnlLogin.Name = "pnlLogin";
             this.pnlLogin.Size = new System.Drawing.Size(972, 654);
             this.pnlLogin.TabIndex = 2;
@@ -445,10 +435,9 @@
             // pnlsignup
             // 
             this.pnlsignup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlsignup.Controls.Add(this.pnlLogin);
             this.pnlsignup.Controls.Add(this.linkLabel3);
             this.pnlsignup.Controls.Add(this.button3);
-            this.pnlsignup.Controls.Add(this.label13);
-            this.pnlsignup.Controls.Add(this.panel23);
             this.pnlsignup.Controls.Add(this.label11);
             this.pnlsignup.Controls.Add(this.label9);
             this.pnlsignup.Controls.Add(this.panel19);
@@ -492,77 +481,6 @@
             this.button3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button3_MouseDown);
             this.button3.MouseEnter += new System.EventHandler(this.button3_MouseEnter);
             this.button3.MouseLeave += new System.EventHandler(this.button3_MouseLeave);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label13.Location = new System.Drawing.Point(143, 424);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(147, 20);
-            this.label13.TabIndex = 17;
-            this.label13.Text = "Confirm Password";
-            // 
-            // panel23
-            // 
-            this.panel23.Controls.Add(this.pnlCPassword);
-            this.panel23.Controls.Add(this.panel25);
-            this.panel23.Location = new System.Drawing.Point(320, 423);
-            this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(400, 109);
-            this.panel23.TabIndex = 16;
-            // 
-            // pnlCPassword
-            // 
-            this.pnlCPassword.Controls.Add(this.label14);
-            this.pnlCPassword.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlCPassword.Location = new System.Drawing.Point(0, 67);
-            this.pnlCPassword.Name = "pnlCPassword";
-            this.pnlCPassword.Size = new System.Drawing.Size(400, 27);
-            this.pnlCPassword.TabIndex = 4;
-            this.pnlCPassword.Visible = false;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(11, 3);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(197, 20);
-            this.label14.TabIndex = 5;
-            this.label14.Text = "this field is required to fill";
-            // 
-            // panel25
-            // 
-            this.panel25.Controls.Add(this.panel26);
-            this.panel25.Controls.Add(this.textBox6);
-            this.panel25.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel25.Location = new System.Drawing.Point(0, 0);
-            this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(400, 67);
-            this.panel25.TabIndex = 3;
-            // 
-            // panel26
-            // 
-            this.panel26.BackColor = System.Drawing.Color.White;
-            this.panel26.Location = new System.Drawing.Point(15, 47);
-            this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(366, 1);
-            this.panel26.TabIndex = 4;
-            // 
-            // textBox6
-            // 
-            this.textBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox6.ForeColor = System.Drawing.Color.Gray;
-            this.textBox6.Location = new System.Drawing.Point(15, 19);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(366, 23);
-            this.textBox6.TabIndex = 2;
-            this.textBox6.Text = " Confirm Password";
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label11
             // 
@@ -799,7 +717,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1395, 708);
-            this.Controls.Add(this.pnlLogin);
             this.Controls.Add(this.pnlsignup);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlLogo);
@@ -827,11 +744,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlsignup.ResumeLayout(false);
             this.pnlsignup.PerformLayout();
-            this.panel23.ResumeLayout(false);
-            this.pnlCPassword.ResumeLayout(false);
-            this.pnlCPassword.PerformLayout();
-            this.panel25.ResumeLayout(false);
-            this.panel25.PerformLayout();
             this.panel19.ResumeLayout(false);
             this.pnlPassword.ResumeLayout(false);
             this.pnlPassword.PerformLayout();
@@ -879,13 +791,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel pnlsignup;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Panel panel23;
-        private System.Windows.Forms.Panel pnlCPassword;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Panel panel25;
-        private System.Windows.Forms.Panel panel26;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel19;
