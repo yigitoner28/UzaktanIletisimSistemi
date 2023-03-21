@@ -17,10 +17,11 @@ namespace UzaktanIletisimSistemi
         {
             InitializeComponent();
         }
-
+        // Sql Bağlantı metni 
         static string conString = "Data Source=DESKTOP-73K0559;Initial Catalog=DbProje;Integrated Security=True";
         SqlConnection connect = new SqlConnection(conString);
 
+        //TextBox1'in Renk değişimi kodları
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -42,6 +43,7 @@ namespace UzaktanIletisimSistemi
 
         }
 
+        //TextBox2'in Renk değişimi kodları
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
@@ -64,26 +66,31 @@ namespace UzaktanIletisimSistemi
             }
         }
 
+        //TextBox1'in Tamamının seçip silme işlemi
         private void textBox1_Click(object sender, EventArgs e)
         {
             textBox1.SelectAll();
         }
 
+        //TextBox2'in Tamamının seçip silme işlemi
         private void textBox2_Click(object sender, EventArgs e)
         {
             textBox2.SelectAll();
         }
 
+        //Buton1 (sign in) Basma anında rengin siyahtan yeşile geçme kodu
         private void button1_MouseEnter(object sender, EventArgs e)
         {
             button1.ForeColor = Color.Black;
         }
 
+        //Buton1 Buton üzerinden ayrılma renk değişikliği
         private void button1_MouseLeave(object sender, EventArgs e)
         {
             button1.ForeColor = Color.Lime;
         }
 
+        //Sign in validasyonun gerçekleştiği yer
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -103,33 +110,8 @@ namespace UzaktanIletisimSistemi
 
                  }
              */
-            // Şifre Kontrolu 
-            /*
-             if(textBox1.Text=="Enter username" || textBox2.Text == "Password")
-             {
-                 if (textBox1.Text == "Enter username")
-                 {
-                     panel5.Visible = true;
-                     textBox1.Focus();
-                     return;
-                 }
-
-                 else if (textBox2.Text == "Password")
-                 {
-                     panel7.Visible = true;
-                     textBox2.Focus();
-                     return;
-
-                 }
-             }
-
-             else if(textBox1.Text!="Enter username"&& textBox2.Text != "Password")
-             {
-                 Form3 frm3 = new Form3();
-                 frm3.Show();
-             }
-
-             */
+            // Şifre Kontrolu Burda Hint özelliği ve boş olma durumu kontrol edilir Daha sonrasında Sql deki tablo kontontrolu gerçekleşir
+           
             if (textBox1.Text == "" || textBox1.Text == "Enter username")
             {
                 panel5.Visible = true;
@@ -167,6 +149,7 @@ namespace UzaktanIletisimSistemi
 
         }
 
+        //Formu kapatma butonu
         private void button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -177,7 +160,8 @@ namespace UzaktanIletisimSistemi
            
             
         }
-
+        
+        // Sign up Butonun renk etkileşimi
         private void button3_MouseLeave(object sender, EventArgs e)
         {
             button3.BackColor = Color.FromArgb(30,30,30) ;
@@ -188,9 +172,29 @@ namespace UzaktanIletisimSistemi
         //System.Windows.Forms.Button. = new System.Windows.Forms.Timer();
 
         // kayıt atma işlemi
+
+        bool durum;
+        void mukerrer()
+        {
+            connect.Open();
+            SqlCommand komut3 = new SqlCommand("select * from Bilgi where kullanici_adi=@p1", connect);
+            komut3.Parameters.AddWithValue("@p1", textBox3.Text);
+            SqlDataReader dr = komut3.ExecuteReader();
+           
+            if (dr.Read())
+            {
+                durum= false;//veri tabanında var 
+            }
+            else
+            {
+                durum= true;
+            }
+            connect.Close();
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
-
+            /*
             try
             {
                 if(connect.State== ConnectionState.Closed)
@@ -217,44 +221,67 @@ namespace UzaktanIletisimSistemi
             {
                 MessageBox.Show("Hata meydana geldi" + hata.Message);
             }
+            */
 
-            if(textBox3.Text == "Enter username" ||textBox3.Text=="")
+            if (textBox3.Text != "Enter username" && textBox4.Text!= "Enter Mail Address" && textBox5.Text != "Enter Password" )
             {
-                pnlUsername.Visible = true;
-                textBox3.Focus();
-                textBox3.SelectAll();
-                return;
+                mukerrer();
+                if (durum == true)
+                {
+                    connect.Open();
+                    SqlCommand komut3 = new SqlCommand("insert into Bilgi (kullanici_adi,eposta,sifre) values (@p1,@p2,@p3)", connect);
 
+                    komut3.Parameters.AddWithValue("@p1", textBox3.Text);
+                    komut3.Parameters.AddWithValue("@p2", textBox4.Text);
+                    komut3.Parameters.AddWithValue("@p3", textBox5.Text);
+                    komut3.ExecuteNonQuery();
+                    connect.Close();
+                    MessageBox.Show("Kayıt eklendi");
+                }
+
+                else
+                {
+                    MessageBox.Show("Bu kayıt zaten var", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-
-            if (textBox4.Text == "Enter Mail Address" || textBox4.Text == "")
+            else
             {
-                pnlMailAddress.Visible = true;
-                textBox4.Focus();
-                textBox4.SelectAll();
-                return;
+                if (textBox3.Text == "Enter username" || textBox3.Text == "")
+                {
+                    pnlUsername.Visible = true;
+                    textBox3.Focus();
+                    textBox3.SelectAll();
+                    return;
 
-            }
-            if (textBox5.Text == "Enter Password" || textBox4.Text == "")
-            {
-                pnlPassword.Visible = true;
-                textBox5.Focus();
-                textBox5.SelectAll();
-                return;
+                }
 
-            }
-            //if (textBox6.Text == " Confirm Password")
-            //{
-            //    pnlCPassword.Visible = true;
-            //    textBox6.Focus();
-            //    textBox6.SelectAll();
-            //    return;
+                if (textBox4.Text == "Enter Mail Address" || textBox4.Text == "")
+                {
+                    pnlMailAddress.Visible = true;
+                    textBox4.Focus();
+                    textBox4.SelectAll();
+                    return;
 
-            //}
+                }
+                if (textBox5.Text == "Enter Password" || textBox4.Text == "")
+                {
+                    pnlPassword.Visible = true;
+                    textBox5.Focus();
+                    textBox5.SelectAll();
+                    return;
+
+                }
+            } 
+
+
+
+
+           
+           
 
 
         }
-
+        //  uyarıları vakitsel olarak göstermeyi sağlar
         private void timer1_Tick(object sender, EventArgs e)
         {
             pnlUsername.Visible = pnlMailAddress.Visible = pnlPassword.Visible = false;
@@ -262,37 +289,40 @@ namespace UzaktanIletisimSistemi
 
         }
 
+        //  açılışı vaktini ayarlar 
         private void Form1_Load(object sender, EventArgs e)
         {
             timer1.Start();
         }
 
+        //textbox3'un etkileşim halinde renk değişimi
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             textBox3.ForeColor= Color.White;
         }
-
+        
+        //textbox4'un etkileşim halinde renk değişimi
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
             textBox4.ForeColor = Color.White;
         }
-
+        
+        //textbox5'un etkileşim halinde renk değişimi
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
             textBox5.ForeColor = Color.White;
         }
 
-        //private void textBox6_TextChanged(object sender, EventArgs e)
-        //{
-        //    textBox6.ForeColor = Color.White;
-        //}
-
+       
+        //Buton3'un sign up'un basma halindeki renk validasyonu
         private void button3_MouseEnter(object sender, EventArgs e)
         {
             button3.ForeColor = Color.Black;
             button3.BackColor = Color.Green;
         }
 
+        
+        //Linklabel3 renk validasyonu
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             pnlLogin.Visible = true;
@@ -301,7 +331,8 @@ namespace UzaktanIletisimSistemi
             pnlLogo.Dock=DockStyle.Left;
 
         }
-
+      
+        //Linklabel2 renk validasyonu
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             pnlLogin.Visible = false;
@@ -312,6 +343,7 @@ namespace UzaktanIletisimSistemi
             
         }
 
+        //Şifre gösterme işlemi
         private void btnShow_Click(object sender, EventArgs e)
         {
             if (textBox2.PasswordChar == '*')
@@ -321,6 +353,7 @@ namespace UzaktanIletisimSistemi
             }
         }
 
+        //Şifre gizleme işlemi
         private void btnHide_Click(object sender, EventArgs e)
         {
             if (textBox2.PasswordChar == '\0')
@@ -330,6 +363,7 @@ namespace UzaktanIletisimSistemi
             }
         }
 
+        //LinkLabel1'in yeni sign up ekranına yönlendirmesi
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Form2 frm2 = new Form2();

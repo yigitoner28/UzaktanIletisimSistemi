@@ -21,12 +21,14 @@ namespace UzaktanIletisimSistemi
         {
             InitializeComponent();
         }
-
+      
+        //Back Labeli vesilesi ile ekranı kapatma işlemi 
         private void linkLabelBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Close();
         }
 
+        //Mail atma validasyonu
         private void button1_Click(object sender, EventArgs e)
         {
             sqlbaglantisi bgln = new sqlbaglantisi();

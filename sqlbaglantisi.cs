@@ -10,6 +10,7 @@ namespace UzaktanIletisimSistemi
 {
     class sqlbaglantisi
     {
+        //Sql Bağlantısı 
         public SqlConnection baglanti()
         {
             SqlConnection baglanti = new SqlConnection("Data Source=DESKTOP-73K0559;Initial Catalog=DbProje;Integrated Security=True");
