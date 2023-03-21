@@ -308,7 +308,7 @@
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(366, 23);
             this.textBox2.TabIndex = 2;
-            this.textBox2.Text = " Password";
+            this.textBox2.Text = "Password";
             this.textBox2.Click += new System.EventHandler(this.textBox2_Click);
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 

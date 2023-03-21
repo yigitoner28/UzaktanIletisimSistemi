@@ -87,49 +87,82 @@ namespace UzaktanIletisimSistemi
         private void button1_Click(object sender, EventArgs e)
         {
 
-           /*
-                if (textBox1.Text == "Enter username")
-                {
-                    panel5.Visible = true;
-                    textBox1.Focus();
-                    return;
-                }
+            /*
+                 if (textBox1.Text == "Enter username")
+                 {
+                     panel5.Visible = true;
+                     textBox1.Focus();
+                     return;
+                 }
 
-                if  (textBox2.Text == "Password")
-                {
-                    panel7.Visible = true;
-                    textBox2.Focus();
-                    return;
+                 if  (textBox2.Text == "Password")
+                 {
+                     panel7.Visible = true;
+                     textBox2.Focus();
+                     return;
 
-                }
-            */ 
-           // Şifre Kontrolu 
-            if(textBox1.Text=="Enter username" || textBox2.Text == "Password")
+                 }
+             */
+            // Şifre Kontrolu 
+            /*
+             if(textBox1.Text=="Enter username" || textBox2.Text == "Password")
+             {
+                 if (textBox1.Text == "Enter username")
+                 {
+                     panel5.Visible = true;
+                     textBox1.Focus();
+                     return;
+                 }
+
+                 else if (textBox2.Text == "Password")
+                 {
+                     panel7.Visible = true;
+                     textBox2.Focus();
+                     return;
+
+                 }
+             }
+
+             else if(textBox1.Text!="Enter username"&& textBox2.Text != "Password")
+             {
+                 Form3 frm3 = new Form3();
+                 frm3.Show();
+             }
+
+             */
+            if (textBox1.Text == "" || textBox1.Text == "Enter username")
             {
-                if (textBox1.Text == "Enter username")
-                {
-                    panel5.Visible = true;
-                    textBox1.Focus();
-                    return;
-                }
-
-                else if (textBox2.Text == "Password")
-                {
-                    panel7.Visible = true;
-                    textBox2.Focus();
-                    return;
-
-                }
+                panel5.Visible = true;
+                textBox1.Focus();
+                return;
+            }
+            if (textBox2.Text== ""|| textBox2.Text == "Password")
+            {
+                panel7.Visible = true;
+                textBox2.Focus();
+                return;
             }
 
-            else if(textBox1.Text!="Enter username"&& textBox2.Text != "Password")
+            connect.Open();
+            string userName;
+            string password;
+            userName = textBox1.Text;
+            password = textBox2.Text;
+
+            SqlCommand komut2 = new SqlCommand("select*from Bilgi where kullanici_adi='" + userName + "' and sifre='" + password + "'", connect);
+            SqlDataReader oku2 = komut2.ExecuteReader();
+            if (oku2.Read())
             {
+                MessageBox.Show("Hoşgeldiniz " + userName + "");
                 Form3 frm3 = new Form3();
                 frm3.Show();
+                this.Hide();
             }
-
-
-
+            else
+            {
+                MessageBox.Show("Hatalı kullanici adı veya şifre...");
+            }
+            connect.Close();
 
 
         }
