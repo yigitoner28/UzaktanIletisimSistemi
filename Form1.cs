@@ -172,7 +172,6 @@ namespace UzaktanIletisimSistemi
         //System.Windows.Forms.Button. = new System.Windows.Forms.Timer();
 
         // kayıt atma işlemi
-
         bool durum;
         void mukerrer()
         {
@@ -192,6 +191,7 @@ namespace UzaktanIletisimSistemi
             connect.Close();
         }
 
+        // Kayıt ekleme ve kontrol validasyonları
         private void button3_Click(object sender, EventArgs e)
         {
             /*
@@ -281,6 +281,7 @@ namespace UzaktanIletisimSistemi
 
 
         }
+
         //  uyarıları vakitsel olarak göstermeyi sağlar
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -325,9 +326,9 @@ namespace UzaktanIletisimSistemi
         //Linklabel3 renk validasyonu
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+           // pnlsignup.Visible = false;
             pnlLogin.Visible = true;
             pnlLogin.Dock=DockStyle.Fill;
-            pnlsignup.Visible = false;
             pnlLogo.Dock=DockStyle.Left;
 
         }
