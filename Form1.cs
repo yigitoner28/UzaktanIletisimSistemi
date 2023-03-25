@@ -191,7 +191,7 @@ namespace UzaktanIletisimSistemi
             connect.Close();
         }
 
-        // Kayıt ekleme ve kontrol validasyonları
+        // Kayıt ekleme ve kontrol validasyonları Mail kontrolu 
         private void button3_Click(object sender, EventArgs e)
         {
             /*
