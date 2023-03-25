@@ -42,7 +42,7 @@ namespace UzaktanIletisimSistemi
                 MessageBox.Show("Lütfen Mail adresi kısmını doldurunuz");
 
             //Eğer Boş değil ve veri tabanında mevcut ise Mail yollama yani Şifre hatırlatmayı hedef maile yollar(gmail)
-            else
+            else if(textBox1.Text!="" && textBox2.Text!="" && this.textBox1.Text.Contains('@'))
             {
                 //sql baglantisi sınıfından aldığımız ve olusturduğumuz bgln nesnesi ile veri tabanı bağlantımız oluştu
                 sqlbaglantisi bgln = new sqlbaglantisi();
@@ -89,6 +89,12 @@ namespace UzaktanIletisimSistemi
                     }
 
                 }
+            }
+
+            else
+            {
+                if (!this.textBox1.Text.Contains('@'))
+                    MessageBox.Show("Lütfen Mailinizi düzgün giriniz ");
             }
         }
     }
