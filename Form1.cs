@@ -223,7 +223,7 @@ namespace UzaktanIletisimSistemi
             }
             */
 
-            if (textBox3.Text != "Enter username" && textBox4.Text!= "Enter Mail Address" && textBox5.Text != "Enter Password" )
+            if (textBox3.Text != "Enter username" && textBox4.Text!= "Enter Mail Address" && textBox5.Text != "Enter Password" && this.textBox4.Text.Contains('@'))
             {
                 mukerrer();
                 if (durum == true)
@@ -244,6 +244,7 @@ namespace UzaktanIletisimSistemi
                     MessageBox.Show("Bu kayıt zaten var", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+
             else
             {
                 if (textBox3.Text == "Enter username" || textBox3.Text == "")
@@ -257,12 +258,18 @@ namespace UzaktanIletisimSistemi
 
                 if (textBox4.Text == "Enter Mail Address" || textBox4.Text == "")
                 {
+                    
                     pnlMailAddress.Visible = true;
                     textBox4.Focus();
                     textBox4.SelectAll();
                     return;
 
                 }
+                else if (!this.textBox4.Text.Contains('@'))
+                {
+                    MessageBox.Show("Mail adresi doğru formatta değil");
+                }
+                
                 if (textBox5.Text == "Enter Password" || textBox4.Text == "")
                 {
                     pnlPassword.Visible = true;
@@ -305,6 +312,7 @@ namespace UzaktanIletisimSistemi
         //textbox4'un etkileşim halinde renk değişimi
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
+
             textBox4.ForeColor = Color.White;
         }
         
@@ -369,6 +377,15 @@ namespace UzaktanIletisimSistemi
         {
             Form2 frm2 = new Form2();
             frm2.Show();
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == '@')
+            {
+                e.Handled = false;
+               
+            }
         }
     }
 }

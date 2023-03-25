@@ -623,6 +623,7 @@
             this.textBox4.TabIndex = 2;
             this.textBox4.Text = "Enter Mail Address";
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
             // label8
             // 
