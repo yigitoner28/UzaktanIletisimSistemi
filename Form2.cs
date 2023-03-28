@@ -25,7 +25,7 @@ namespace UzaktanIletisimSistemi
         //Back Labeli vesilesi ile ekranı kapatma işlemi 
         private void linkLabelBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.Close();
+            this.Close();// giriş sayfasına yönlendirme
         }
 
         //Mail atma validasyonu Bu buton olayı sayesinde gmail domainine sahip kişilere şifre iletilerek Kullanıcının veri tabanına kayıtlı şifresi hatırlatılmaktadır
@@ -55,16 +55,16 @@ namespace UzaktanIletisimSistemi
                 {
                     try
                     {
-                        if (bgln.baglanti().State == ConnectionState.Closed)
+                        if (bgln.baglanti().State == ConnectionState.Closed)// baglantı kontrolu
                         {
-                            bgln.baglanti().Open();
+                            bgln.baglanti().Open();// baglantı açılması
                         }
                         SmtpClient smtpserver = new SmtpClient();
                         MailMessage mail = new MailMessage();
                         String tarih = DateTime.Now.ToLongDateString();
-                        String mailadresin = ("mariusy28@gmail.com");
-                        String sifre = ("y253910m");
-                        String smptsrvr = "smtp.gmail.com";
+                        String mailadresin = ("mariusy28@gmail.com");// mail atma işleminde kullanılacak mail adersi
+                        String sifre = ("y253910m");// şifresi 
+                        String smptsrvr = "smtp.gmail.com";// protokol 
                         String kime = (oku["eposta"].ToString());
                         String konu = ("Şifre Hatırlatma Maili");
                         String yaz = ("Sayın," + oku["kullanici_adi"].ToString() + "\n" + "Bizden" + tarih + " Tarihinde Şifre Hatırlatma Talebinde" +
@@ -83,7 +83,7 @@ namespace UzaktanIletisimSistemi
                         this.Hide();
 
                     }
-                    catch (Exception Hata)
+                    catch (Exception Hata)// Eğer mail karşı kişiye iletime durumda hata ile karşılaşılınırsa (Düşük seviyeli uygulama özelliğinin açılamama nedeni dahil)
                     {
                         MessageBox.Show("Mail Gönderme Hatası!", Hata.Message);// şu an hata vermesinin nedeni google yandex protonmail gibi düşük güvenlik özelliği desteğini kapatmasıdır.
                     }
@@ -91,9 +91,9 @@ namespace UzaktanIletisimSistemi
                 }
             }
 
-            else
+            else// Mail kontrolu doğru formatta mi
             {
-                if (!this.textBox1.Text.Contains('@'))
+                if (!this.textBox1.Text.Contains('@'))// Eğer @ karakteri ifadede mevcut değilse
                     MessageBox.Show("Lütfen Mailinizi düzgün giriniz ");
             }
         }

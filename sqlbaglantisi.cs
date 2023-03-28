@@ -13,6 +13,7 @@ namespace UzaktanIletisimSistemi
         //Sql Bağlantısı ; Bu sınıfı ayrı tanımlama nedeni connection stringi Karışık kod satırları arasında bulunmaması gerekmesi
         public SqlConnection baglanti()
         {
+            // veri tabanı ile bağlantıyı sağlama
             SqlConnection baglanti = new SqlConnection("Data Source=DESKTOP-73K0559;Initial Catalog=DbProje;Integrated Security=True");
             baglanti.Open();
             return baglanti;

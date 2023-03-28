@@ -25,16 +25,16 @@ namespace UzaktanIletisimSistemi
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
-            try
+            try// çalışması halinde  try içine giriliyor
             {
 
-                if (textBox1.Text == "")
+                if (textBox1.Text == "")//eğer textbox1 boş ise 
                 {
-                    textBox1.Text = "Enter username";
+                    textBox1.Text = "Enter username";//içerideki "Enter username" yazısı yazıyor
                     return;
                 }
-                textBox1.ForeColor= Color.White;
-                panel5.Visible= false;
+                textBox1.ForeColor= Color.White;// Yazı beyaz renkte
+                panel5.Visible= false;//Panel 5 teki uyarı yazısı kapanıyor
             }
             catch
             {
@@ -47,17 +47,17 @@ namespace UzaktanIletisimSistemi
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
-            try
+            try// çalışması halinde  try içine giriliyor
             {
 
-                if (textBox2.Text == "")
+                if (textBox2.Text == "")//eğer textbox2 boş ise 
                 {
-                    textBox2.Text = "Password";
+                    textBox2.Text = "Password";//içerideki "Password" yazısı yazıyor
                     return;
                 }
-                textBox2.ForeColor = Color.White;
-                textBox2.PasswordChar= '*';
-                panel7.Visible = false;
+                textBox2.ForeColor = Color.White;// Yazı beyaz renkte
+                textBox2.PasswordChar= '*';// şifre * karakteri şeklini almasını sağlıyor
+                panel7.Visible = false;//panel 7 deki uyarı yazısı kapanıyor
 
             }
             catch
@@ -69,25 +69,25 @@ namespace UzaktanIletisimSistemi
         //TextBox1'in Tamamının seçip silme işlemi
         private void textBox1_Click(object sender, EventArgs e)
         {
-            textBox1.SelectAll();
+            textBox1.SelectAll();// Etkileşim halinde textbox1 içindeki verilerin hepsini seçiyor
         }
 
         //TextBox2'in Tamamının seçip silme işlemi
         private void textBox2_Click(object sender, EventArgs e)
         {
-            textBox2.SelectAll();
+            textBox2.SelectAll();// Etkileşim halinde textbox2 içindeki verilerin hepsini seçiyor
         }
 
         //Buton1 (sign in) Basma anında rengin siyahtan yeşile geçme kodu
         private void button1_MouseEnter(object sender, EventArgs e)
         {
-            button1.ForeColor = Color.Black;
+            button1.ForeColor = Color.Black; // Etkileşim halinde  yazı rengi siyah olmakta
         }
 
         //Buton1 Buton üzerinden ayrılma renk değişikliği
         private void button1_MouseLeave(object sender, EventArgs e)
         {
-            button1.ForeColor = Color.Lime;
+            button1.ForeColor = Color.Lime;// buton üzerinden etkileşimin kalkması halinde yazı rengi lime yeşili oluyor.
         }
 
         //Sign in validasyonun gerçekleştiği yer
@@ -112,13 +112,13 @@ namespace UzaktanIletisimSistemi
              */
             // Şifre Kontrolu Burda Hint özelliği ve boş olma durumu kontrol edilir Daha sonrasında Sql deki tablo kontontrolu gerçekleşir
            
-            if (textBox1.Text == "" || textBox1.Text == "Enter username")
+            if (textBox1.Text == "" || textBox1.Text == "Enter username")// textbox1 doğru olmayan tipte ise 
             {
                 panel5.Visible = true;
                 textBox1.Focus();
                 return;
             }
-            if (textBox2.Text== ""|| textBox2.Text == "Password")
+            if (textBox2.Text== ""|| textBox2.Text == "Password")// textbox2 doğru olmayan tipte ise
             {
                 panel7.Visible = true;
                 textBox2.Focus();
@@ -131,16 +131,17 @@ namespace UzaktanIletisimSistemi
             userName = textBox1.Text;
             password = textBox2.Text;
 
+            //Verinin veri tabanında olup olmadığını belirlemek için kullanıldı
             SqlCommand komut2 = new SqlCommand("select*from Bilgi where kullanici_adi='" + userName + "' and sifre='" + password + "'", connect);
             SqlDataReader oku2 = komut2.ExecuteReader();
-            if (oku2.Read())
+            if (oku2.Read())// komut doğru ise
             {
                 MessageBox.Show("Hoşgeldiniz " + userName + "");
                 Form3 frm3 = new Form3();
                 frm3.Show();
                 this.Hide();
             }
-            else
+            else//komut doğru değilse
             {
                 MessageBox.Show("Hatalı kullanici adı veya şifre...");
             }
@@ -152,7 +153,7 @@ namespace UzaktanIletisimSistemi
         //Formu kapatma butonu
         private void button2_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Application.Exit();//Close butonu etkileşimi kapatmayı sağlıyor
         }
 
         private void button3_MouseDown(object sender, MouseEventArgs e)
@@ -169,24 +170,25 @@ namespace UzaktanIletisimSistemi
         }
 
 
-        //System.Windows.Forms.Button. = new System.Windows.Forms.Timer();
+        //System.Windows.Forms.Button. = new System.Windows.Forms.Timer(); bu özelliği araç kutusundan atandığı için gerek kalmadı ancak dilenirse kullanılabilir
 
         // kayıt atma işlemi
         bool durum;
-        void mukerrer()
+        void mukerrer()// Tekrarı engellemeyi sağlayan metot
         {
             connect.Open();
             SqlCommand komut3 = new SqlCommand("select * from Bilgi where kullanici_adi=@p1", connect);
             komut3.Parameters.AddWithValue("@p1", textBox3.Text);
+            //Kullanıcı adını veri tabanında sorgulayıp eşleştirmeyi sağlamak içindir
             SqlDataReader dr = komut3.ExecuteReader();
            
-            if (dr.Read())
+            if (dr.Read())//komut 3 başarılı ise
             {
-                durum= false;//veri tabanında var 
+                durum= false;//veri tabanında var ise
             }
-            else
+            else//komut 3 başarılı değil ise
             {
-                durum= true;
+                durum= true;// veri tabanında yok ise
             }
             connect.Close();
         }
@@ -194,39 +196,13 @@ namespace UzaktanIletisimSistemi
         // Kayıt ekleme ve kontrol validasyonları Mail kontrolu 
         private void button3_Click(object sender, EventArgs e)
         {
-            /*
-            try
-            {
-                if(connect.State== ConnectionState.Closed)
-                    connect.Open();
-             
-                string kayit = "insert into bilgi (kullanici_adi,eposta,sifre) values (@kullanici_ad,@epostaa,@sifree)";
-                SqlCommand komut = new SqlCommand(kayit,connect);
+            
 
-                komut.Parameters.AddWithValue("@kullanici_ad", textBox3.Text);
-
-                komut.Parameters.AddWithValue("@epostaa", textBox4.Text);
-
-                komut.Parameters.AddWithValue("@sifree", textBox5.Text);
-
-                komut.ExecuteNonQuery();
-
-                connect.Close();
-                MessageBox.Show("kayit eklendi");
-
-               
-
-            }
-            catch(Exception hata)
-            {
-                MessageBox.Show("Hata meydana geldi" + hata.Message);
-            }
-            */
-
+            // boş veya varsayılan özellik textboxta değil ise 
             if (textBox3.Text != "Enter username" && textBox4.Text!= "Enter Mail Address" && textBox5.Text != "Enter Password" && this.textBox4.Text.Contains('@'))
             {
                 mukerrer();
-                if (durum == true)
+                if (durum == true)// veri tabanı ekleme işlemi için başarılı
                 {
                     connect.Open();
                     SqlCommand komut3 = new SqlCommand("insert into Bilgi (kullanici_adi,eposta,sifre) values (@p1,@p2,@p3)", connect);
@@ -239,15 +215,15 @@ namespace UzaktanIletisimSistemi
                     MessageBox.Show("Kayıt eklendi");
                 }
 
-                else
+                else// Eğer veri tabanında aynı kullanıcı ismine sahip kişi mevcutsa
                 {
                     MessageBox.Show("Bu kayıt zaten var", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
 
-            else
+            else// eğer boş veya varsayılan özellik varsa
             {
-                if (textBox3.Text == "Enter username" || textBox3.Text == "")
+                if (textBox3.Text == "Enter username" || textBox3.Text == "")// User name uyarı kontrolu 
                 {
                     pnlUsername.Visible = true;
                     textBox3.Focus();
@@ -256,7 +232,7 @@ namespace UzaktanIletisimSistemi
 
                 }
 
-                if (textBox4.Text == "Enter Mail Address" || textBox4.Text == "")
+                if (textBox4.Text == "Enter Mail Address" || textBox4.Text == "")// Mail adres uyarı kontrolu 
                 {
                     
                     pnlMailAddress.Visible = true;
@@ -265,12 +241,12 @@ namespace UzaktanIletisimSistemi
                     return;
 
                 }
-                else if (!this.textBox4.Text.Contains('@'))
+                else if (!this.textBox4.Text.Contains('@'))// Mail doğru formatta değil ise uyarı kontrolu
                 {
                     MessageBox.Show("Mail adresi doğru formatta değil");
                 }
                 
-                if (textBox5.Text == "Enter Password" || textBox4.Text == "")
+                if (textBox5.Text == "Enter Password" || textBox4.Text == "")// Şifre uyarı kontrolu 
                 {
                     pnlPassword.Visible = true;
                     textBox5.Focus();
@@ -348,14 +324,14 @@ namespace UzaktanIletisimSistemi
             pnlsignup.Visible = true;
             pnlLogo.Dock = DockStyle.Right;
 
-            pnlsignup.Dock = DockStyle.Fill;
+            pnlsignup.Dock = DockStyle.Fill;// kayıt ol panelinin hareketini sağlamaktadır
             
         }
 
         //Şifre gösterme işlemi
         private void btnShow_Click(object sender, EventArgs e)
         {
-            if (textBox2.PasswordChar == '*')
+            if (textBox2.PasswordChar == '*')// şifrenin doğru formatta gözükmesini sağlar
             {
                 btnHide.BringToFront();
                 textBox2.PasswordChar = '\0';
@@ -381,11 +357,18 @@ namespace UzaktanIletisimSistemi
 
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == '@')
+            if(e.KeyChar == '@')// @ işaretinin kullanımını sağlamak amacında
             {
                 e.Handled = false;
                
             }
+        }
+
+        //admin giriş ekranına yönlendirme
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form4 frm4 = new Form4();// ADmin giriş ekranı
+            frm4.Show();
         }
     }
 }
