@@ -94,22 +94,7 @@ namespace UzaktanIletisimSistemi
         private void button1_Click(object sender, EventArgs e)
         {
 
-            /*
-                 if (textBox1.Text == "Enter username")
-                 {
-                     panel5.Visible = true;
-                     textBox1.Focus();
-                     return;
-                 }
-
-                 if  (textBox2.Text == "Password")
-                 {
-                     panel7.Visible = true;
-                     textBox2.Focus();
-                     return;
-
-                 }
-             */
+            
             // Şifre Kontrolu Burda Hint özelliği ve boş olma durumu kontrol edilir Daha sonrasında Sql deki tablo kontontrolu gerçekleşir
            
             if (textBox1.Text == "" || textBox1.Text == "Enter username")// textbox1 doğru olmayan tipte ise 

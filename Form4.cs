@@ -130,13 +130,6 @@ namespace UzaktanIletisimSistemi
 
 
 
-
-
-
-
-
-
-
         }
 
         //Formu kapatma butonu
