@@ -118,8 +118,8 @@ namespace UzaktanIletisimSistemi
             if (oku2.Read())// komut doğru ise
             {
                 MessageBox.Show("Hoşgeldiniz " + userName + "");
-                Form3 frm3 = new Form3();
-                frm3.Show();
+                Form5 frm5 = new Form5();
+                frm5.Show();
                 this.Hide();
             }
             else//komut doğru değilse
