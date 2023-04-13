@@ -338,6 +338,7 @@ namespace UzaktanIletisimSistemi
         {
             Form2 frm2 = new Form2();
             frm2.Show();
+
         }
 
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
@@ -353,7 +354,9 @@ namespace UzaktanIletisimSistemi
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Form4 frm4 = new Form4();// ADmin giriş ekranı
+            
             frm4.Show();
+            this.Hide();
         }
     }
 }

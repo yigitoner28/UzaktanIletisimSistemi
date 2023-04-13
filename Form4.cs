@@ -119,8 +119,10 @@ namespace UzaktanIletisimSistemi
             {
                 MessageBox.Show("Hoşgeldiniz " + userName + "");
                 Form5 frm5 = new Form5();
+                Form1 frm1 = new Form1();
                 frm5.Show();
                 this.Hide();
+                frm1.Close();
             }
             else//komut doğru değilse
             {
@@ -141,6 +143,8 @@ namespace UzaktanIletisimSistemi
         // Normal kullanıcı giris ekranı
         private void linkLabelBack_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            Form1 form1 = new Form1();  
+            form1.Show();
             this.Close();// giriş sayfasına yönlendirme
         }
 
