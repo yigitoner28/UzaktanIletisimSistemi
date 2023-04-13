@@ -265,6 +265,11 @@ namespace UzaktanIletisimSistemi
 
             }
         }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
 
