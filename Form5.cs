@@ -270,6 +270,13 @@ namespace UzaktanIletisimSistemi
         {
             Application.Exit();
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form6 frm6 = new Form6();
+            frm6.Show();
+            this.Close();
+        }
     }
 }
 
