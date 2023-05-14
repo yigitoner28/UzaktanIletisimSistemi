@@ -5,6 +5,10 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UzaktanIletisimSistemi", "UzaktanIletisimSistemi.csproj", "{0F2CE59F-3495-4444-BDDA-557097529700}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "..\..\..\..\..\..\source\repos\chat-app\src\Server\Server\Server.csproj", "{D551B388-5DE2-43F5-958D-5E56759F9682}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "..\..\..\..\..\..\source\repos\chat-app\src\Client\Client\Client.csproj", "{0865AE39-FE87-4A5F-9DFA-1C8065C4732F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{0F2CE59F-3495-4444-BDDA-557097529700}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F2CE59F-3495-4444-BDDA-557097529700}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F2CE59F-3495-4444-BDDA-557097529700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D551B388-5DE2-43F5-958D-5E56759F9682}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D551B388-5DE2-43F5-958D-5E56759F9682}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D551B388-5DE2-43F5-958D-5E56759F9682}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D551B388-5DE2-43F5-958D-5E56759F9682}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0865AE39-FE87-4A5F-9DFA-1C8065C4732F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0865AE39-FE87-4A5F-9DFA-1C8065C4732F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0865AE39-FE87-4A5F-9DFA-1C8065C4732F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0865AE39-FE87-4A5F-9DFA-1C8065C4732F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
